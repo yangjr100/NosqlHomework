@@ -1,0 +1,41 @@
+{
+  "actions": [
+    {
+      "name": "ADD_USER",
+      "describe": "围观人数增加",
+      "show":[
+        {
+          "counterName": "showUserCount"
+        }
+      ],
+      "operation":[
+        {
+          "counterName": "addUser"
+        }
+      ]
+    },
+    {
+      "name": "DEL_USER",
+      "describe": "围观人数减少",
+      "show": [
+        {
+          "counterName": "showUserCount"
+        }
+      ],
+      "operation": [
+        {
+          "counterName": "delUser"
+        }
+      ]
+    },
+    {
+      "name": "SHOW_USER_FREQ",
+      "describe": "指定时段内观众流量",
+      "show": [
+        {
+          "counterName": "showUserFreq"
+        }
+      ]
+    }
+  ]
+}
