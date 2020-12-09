@@ -1,7 +1,5 @@
 package pack;
 
-import java.util.Arrays;
-
 public class Rank {
 	//Õ∞≈≈–Ú
 	public static String[] reRank(String[] input) {

@@ -3,6 +3,8 @@ package pack;
 import java.util.ArrayList;
 import java.util.List;
 
+import pack.BinaryTree.TreeNode;
+
 /*
  * 1.先序遍历的两种方法：递归、分治
  */
@@ -15,7 +17,7 @@ class Solution1{
 	}
 
 	//把root为根节点的preorder加入结果数组里
-	private void traverse(TreeNode root, ArrayList<Integer> tra) {
+	public void traverse(TreeNode root, ArrayList<Integer> tra) {
 		if(root==null) {
 			return;
 		}
@@ -134,6 +136,7 @@ class FindMinSumRoot{
 		return sum;
 	}
 }
+
 
 
 
