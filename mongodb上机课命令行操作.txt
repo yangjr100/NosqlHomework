@@ -1,0 +1,48 @@
+Microsoft Windows [版本 10.0.18363.1198]
+(c) 2019 Microsoft Corporation。保留所有权利。
+
+D:\mongodb\Server\4.4\bin>mongo.exe
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a599e7fb-7dde-47dc-9c8d-55894f19cc0b") }
+MongoDB server version: 4.4.1
+---
+The server generated these startup warnings when booting:
+        2020-12-09T08:18:22.728+08:00: ***** SERVER RESTARTED *****
+        2020-12-09T08:18:25.280+08:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> db.stores.createIndex( { name: "text", description: "text" } )
+{
+        "numIndexesBefore" : 2,
+        "numIndexesAfter" : 2,
+        "note" : "all indexes already exist",
+        "ok" : 1
+}
+> db.stores.find( { $text: { $search: "java coffee shop" } } )
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes" }
+{ "_id" : 5, "name" : "Java Shopping", "description" : "Indonesian goods" }
+> db.stores.find(
+...    { $text: { $search: "coffee shop cake" } },
+...    { score: { $meta: "textScore" } }
+... ).sort( { score: { $meta: "textScore" } } )
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee", "score" : 2.25 }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "score" : 1.5 }
+{ "_id" : 5, "name" : "Java Shopping", "description" : "Indonesian goods", "score" : 0.75 }
+> db.bios.findOne()
+null
+> exit
+bye
+
+D:\mongodb\Server\4.4\bin>
